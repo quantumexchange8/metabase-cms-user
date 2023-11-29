@@ -1,5 +1,5 @@
 {
-  "name": "metabase-web-user",
+  "name": "metabase-cms-user",
   "version": "0.0.0",
   "private": true,
   "scripts": {

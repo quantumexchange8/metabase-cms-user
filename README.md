@@ -1,14 +1,8 @@
-# metabase-web-user
+# Metabse CMS User
 
-This template should help get you started developing with Vue 3 in Vite.
+Metabase CMS User is a web app for users to manage their affiliates and trading accounts. It tends to improve in user experience when managing their trading accounts.
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+<img width="600px" src="public/images/readme-welcome.png" alt="image_name png" />
 
 ## Project Setup
 

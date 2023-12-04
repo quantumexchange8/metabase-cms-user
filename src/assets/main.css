@@ -6,6 +6,38 @@
 
 @layer base {
     :root {
-        --color-primary: 41 112 255;
+        --primary-25: #F5F8FF;
+        --primary-50: #EFF4FF;
+        --primary-100: #D1E0FF;
+        --primary-200: #B2CCFF;
+        --primary-300: #84ADFF;
+        --primary-400: #528BFF;
+        --primary-500: #2970FF;
+        --primary-600: #155EEF;
+        --primary-700: #004EEB;
+        --primary-800: #0040C1;
+        --primary-900: #00359E;
+        --primary-950: #002266;
+
+        --box-shadow-primary-light: 0px 0px 0px 4px rgba(209, 224, 255, 1);
+        --box-shadow-primary-dark: 0px 0px 0px 4px rgba(0, 34, 102, 1);
+    }
+
+    .theme-purple {
+        --primary-25: #FBFAFF;
+        --primary-50: #F5F3FF;
+        --primary-100: #ECE9FE;
+        --primary-200: #DDD6FE;
+        --primary-300: #C3B5FD;
+        --primary-400: #A48AFB;
+        --primary-500: #875BF7;
+        --primary-600: #7839EE;
+        --primary-700: #6927DA;
+        --primary-800: #5720B7;
+        --primary-900: #491C96;
+        --primary-950: #2E125E;
+
+        --box-shadow-primary-light: 0px 0px 0px 4px rgba(236, 233, 254, 1);
+        --box-shadow-primary-dark: 0px 0px 0px 4px rgba(46, 18, 94, 1);
     }
 }

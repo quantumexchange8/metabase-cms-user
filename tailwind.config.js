@@ -3,21 +3,13 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
+    darkMode: 'class',
     content: [
         "./index.html",
         "./src/**/*.{vue, js}"
     ],
     theme: {
         extend: {
-            fontFamily: {
-                sans: ['Inter', ...defaultTheme.fontFamily.sans],
-            },
-
-            fontSize: {
-                xl: ['20px', '30px'],
-                '3xl': ['30px', '38px']
-            },
-
             colors: {
                 gray: {
                     light: {
@@ -49,19 +41,19 @@ module.exports = {
                         950: '#0C111D',
                     }
                 },
-                blue: {
-                    25: '#F5F8FF',
-                    50: '#EFF4FF',
-                    100: '#D1E0FF',
-                    200: '#B2CCFF',
-                    300: '#84ADFF',
-                    400: '#528BFF',
-                    500: '#2970FF',
-                    600: '#155EEF',
-                    700: '#004EEB',
-                    800: '#0040C1',
-                    900: '#00359E',
-                    950: '#002266',
+                primary: {
+                    25: 'var(--primary-25)',
+                    50: 'var(--primary-50)',
+                    100: 'var(--primary-100)',
+                    200: 'var(--primary-200)',
+                    300: 'var(--primary-300)',
+                    400: 'var(--primary-400)',
+                    500: 'var(--primary-500)',
+                    600: 'var(--primary-600)',
+                    700: 'var(--primary-700)',
+                    800: 'var(--primary-800)',
+                    900: 'var(--primary-900)',
+                    950: 'var(--primary-950)',
                 },
                 success: {
                     25: '#F6FEF9',
@@ -125,14 +117,29 @@ module.exports = {
                     DEFAULT: '#00C7BE',
                     dark: '#63E6E2'
                 },
-                primary: 'rgb(var(--color-primary) / <alpha-value>)',
+                // primary: 'rgb(var(--color-primary) / <alpha-value>)',
             },
+        },
+        fontFamily: {
+            sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        },
 
-            boxShadow: {
-                xs: '0px 1px 2px 0px rgba(16, 24, 40, 0.05)',
-                'blue-light': "0px 0px 0px 4px rgba(209, 224, 255, 1)",
-                'blue-dark': "0px 0px 0px 4px rgba(0, 64, 193, 1)",
-            }
+        fontSize: {
+            xl: ['20px', '30px'],
+            '3xl': ['30px', '38px']
+        },
+
+        boxShadow: {
+            xs: '0px 1px 2px 0px rgba(16, 24, 40, 0.05)',
+            'primary-light': 'var(--box-shadow-primary-light)',
+            'primary-dark': 'var(--box-shadow-primary-dark)',
+            'error-light': "0px 0px 0px 4px rgba(254, 228, 226, 1)",
+            'error-dark': "0px 0px 0px 4px rgba(85, 22, 12, 1)",
+        },
+
+        content: {
+            'sun': 'url("../assets/icons/sun.svg")',
+            'moon': 'url("../assets/icons/moon.svg")',
         },
     },
     plugins: [require('@tailwindcss/forms')],

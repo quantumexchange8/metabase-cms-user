@@ -7,14 +7,48 @@ const router = createRouter({
     routes: [
         {
             path: '/',
-            name: 'home',
-            component: HomeView
+            name: 'Auth',
+            component: () => import('@/layouts/AuthLayout.vue'),
+            children: [
+                {
+                    path: '/login',
+                    name: 'Login',
+                    component: () => import('@/views/Auth/Login.vue'),
+                },
+
+                // {
+                //     path: '/auth/register',
+                //     name: 'Register',
+                //     component: () => import('@/views/auth/Register.vue'),
+                // },
+                // {
+                //     path: '/auth/forgot-password',
+                //     name: 'ForgotPassword',
+                //     component: () => import('@/views/auth/ForgotPassword.vue'),
+                // },
+                // {
+                //     path: '/auth/reset-password',
+                //     name: 'ResetPassword',
+                //     component: () => import('@/views/auth/ResetPassword.vue'),
+                // },
+                // {
+                //     path: '/auth/confirm-password',
+                //     name: 'ConfirmPassword',
+                //     component: () => import('@/views/auth/ConfirmPassword.vue'),
+                // },
+                // {
+                //     path: '/auth/verify-email',
+                //     name: 'VerifyEmail',
+                //     component: () => import('@/views/auth/VerifyEmail.vue'),
+                // },
+            ],
         },
-        {
-            path: '/login',
-            name: 'login',
-            component: Login
-        }
+        // {
+        //     path: '/',
+        //     name: 'home',
+        //     component: HomeView
+        // },
+
     ]
 })
 

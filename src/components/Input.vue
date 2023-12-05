@@ -32,7 +32,7 @@ onMounted(() => {
     <input
         :class="[
             'py-2.5 rounded-lg text-base font-normal shadow-xs border placeholder:text-gray-light-500 dark:placeholder:text-gray-dark-400 text-gray-light-900 dark:text-gray-dark-50',
-            'bg-white dark:bg-gray-950',
+            'bg-white dark:bg-gray-dark-950',
             'disabled:bg-gray-light-50 disabled:cursor-not-allowed dark:disabled:bg-gray-dark-900',
             {
                 'px-4': !withIcon,

@@ -1,0 +1,151 @@
+<script setup>
+import {computed, ref} from 'vue'
+import {
+    Listbox,
+    ListboxLabel,
+    ListboxButton,
+    ListboxOptions,
+    ListboxOption,
+} from '@headlessui/vue'
+import {CheckIcon, ChevronDownIcon} from '@heroicons/vue/20/solid'
+
+const props = defineProps({
+    options: Array,
+    modelValue: [String, Number, Array],
+    placeholder: {
+        type: String,
+        default: 'Please Select'
+    },
+    multiple: Boolean,
+    error: String,
+    withImg: {
+        type: Boolean,
+        default: false,
+    },
+    isPhoneCode: {
+        type: Boolean,
+        default: false,
+    },
+})
+
+const emit = defineEmits(['update:modelValue'])
+
+const labelWithImg = computed(() => {
+    return props.options
+        .filter(option => {
+            if (Array.isArray(props.modelValue)) {
+                return props.modelValue.includes(option.value);
+            }
+            return props.modelValue === option.value;
+        })
+        .map(option => ({ label: option.label, value: option.value, imgUrl: option.imgUrl }));
+});
+
+const label = computed(() => {
+    return props.options.filter(option => {
+        if (Array.isArray(props.modelValue)) {
+            return props.modelValue.includes(option.value);
+        }
+
+        return props.modelValue === option.value;
+    }).map(option => option.label).join(', ')
+})
+
+const shouldShowLabelWithImg = computed(() => props.withImg && labelWithImg.value.length > 0);
+const labelWithImgString = computed(() => labelWithImg.value.map(item => item.label).join(', '));
+const labelWithValue = computed(() => labelWithImg.value.map(item => item.value).join(', '));
+</script>
+
+<template>
+    <Listbox
+        :multiple="props.multiple"
+        :model-value="props.modelValue"
+        @update:modelValue="value => emit('update:modelValue', value)"
+    >
+        <div class="relative">
+            <ListboxButton
+                class="relative w-full cursor-default rounded-lg border shadow-xs bg-white dark:bg-gray-dark-950 py-2.5 pl-4 pr-10 text-left focus:ring-1 focus:outline-none"
+                :class="[
+                    {
+                        'border-error-300 focus:ring-error-300 hover:border-error-300 focus:border-error-300 focus:shadow-error-light dark:border-error-600 dark:focus:ring-error-600 dark:hover:border-error-600 dark:focus:border-error-600 dark:focus:shadow-error-dark': error,
+                        'border-gray-light-300 dark:border-gray-dark-600 focus:ring-primary-400 hover:border-primary-400 focus-within:border-primary-400 focus-within:shadow-primary-light dark:focus-within:ring-primary-500 dark:hover:border-primary-500 dark:focus-within:border-primary-500 dark:focus-within:shadow-primary-dark': !error
+                    }
+                ]"
+            >
+                <div class="flex gap-2 text-gray-light-900 dark:text-gray-dark-50 items-center">
+                    <template v-if="shouldShowLabelWithImg && withImg && isPhoneCode">
+                        <img v-for="item in labelWithImg" :key="item.label" :src="item.imgUrl" width="24" alt="img">
+                        <span class="block truncate">{{ labelWithValue }}</span>
+                    </template>
+                    <template v-else-if="shouldShowLabelWithImg && withImg && !isPhoneCode">
+                        <img v-for="item in labelWithImg" :key="item.label" :src="item.imgUrl" width="24" alt="img">
+                        <span class="block truncate">{{ labelWithImgString }}</span>
+                    </template>
+                    <template v-else-if="!withImg && label">
+                        <span class="block truncate">{{ label }}</span>
+                    </template>
+                    <template v-else>
+                        <span class="text-gray-light-500 dark:text-gray-dark-400">{{ props.placeholder }}</span>
+                    </template>
+                </div>
+                <span
+                    class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2"
+                >
+                    <ChevronDownIcon
+                        class="h-5 w-5 text-gray-400"
+                        aria-hidden="true"
+                    />
+                </span>
+            </ListboxButton>
+            <transition
+                leave-active-class="transition duration-100 ease-in"
+                leave-from-class="opacity-100"
+                leave-to-class="opacity-0"
+            >
+                <ListboxOptions
+                    class="z-10 absolute border border-gray-light-300 dark:border-gray-dark-600 mt-2 max-h-60 w-full overflow-auto rounded-lg bg-white dark:bg-gray-dark-950 py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
+                >
+                    <ListboxOption
+                        v-slot="{ active, selected }"
+                        v-for="option in props.options"
+                        :key="option.label"
+                        :value="option.value"
+                        as="template"
+                    >
+                        <li
+                            :class="[
+                                active ? 'bg-gray-light-100 dark:bg-gray-dark-800 text-gray-light-900 dark:text-gray-dark-50' : 'text-gray-light-900 dark:text-gray-dark-50',
+                                selected ? 'bg-gray-light-100 dark:bg-gray-dark-800' : '',
+                                'relative cursor-default select-none py-2 px-4',
+                            ]"
+                        >
+                            <template v-if="withImg">
+                                 <span
+                                     :class="[
+                                        'block truncate',
+                                      ]"
+                                 >
+                                     <span class="flex items-center gap-2"><img :key="option.label" :src="option.imgUrl" width="24" alt="img">{{ option.label }} <span v-if="isPhoneCode">({{ option.value }})</span></span></span>
+                            </template>
+                            <template v-else>
+                                 <span
+                                     :class="[
+                                selected ? 'font-medium' : 'font-normal',
+                                'block truncate',
+                              ]"
+                                 >{{ option.label }}</span>
+                            </template>
+                            <span
+                                v-if="selected"
+                                class="absolute inset-y-0 right-0 flex items-center pr-3 dark:text-white"
+                            >
+                                <CheckIcon class="h-5 w-5 text-primary-600" aria-hidden="true"/>
+                            </span>
+                        </li>
+                    </ListboxOption>
+                </ListboxOptions>
+            </transition>
+            <div class="text-sm text-error-500 mt-2" v-if="props.error">{{ props.error }}</div>
+        </div>
+    </Listbox>
+</template>

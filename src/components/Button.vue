@@ -74,8 +74,8 @@ const baseClasses = [
 ]
 
 const variantClasses = (variant) => ({
-    'bg-primary-600 text-white hover:bg-primary-700 disabled:bg-primary-100 disabled:text-white disabled:cursor-not-allowed dark:disabled:bg-[#026] dark:disabled:text-primary-800': variant == 'primary-filled',
-    'bg-primary-50 text-primary-700 hover:bg-primary-100 disabled:bg-primary-100 disabled:text-primary-300 disabled:cursor-not-allowed dark:bg-primary-900 dark:text-primary-200 dark:hover:bg-primary-800 dark:hover:text-primary-200 dark:disabled:bg-[#026] dark:disabled:text-primary-800': variant == 'primary-faded',
+    'bg-primary-600 text-white hover:bg-primary-700 disabled:bg-primary-100 disabled:text-white disabled:cursor-not-allowed dark:disabled:bg-primary-950 dark:disabled:text-primary-800': variant == 'primary-filled',
+    'bg-primary-50 text-primary-700 hover:bg-primary-100 disabled:bg-primary-100 disabled:text-primary-300 disabled:cursor-not-allowed dark:bg-primary-900 dark:text-primary-200 dark:hover:bg-primary-800 dark:hover:text-primary-200 dark:disabled:bg-primary-950 dark:disabled:text-primary-800': variant == 'primary-faded',
     'bg-white border border-primary-300 text-primary-700 hover:bg-primary-50 disabled:bg-white disabled:text-primary-200 disabled:border-primary-200 disabled:cursor-not-allowed dark:bg-gray-dark-950 dark:text-primary-200 dark:border-primary-600 dark:hover:bg-primary-900 dark:hover:text-primary-200 dark:disabled:bg-transparent dark:disabled:border-primary-900 dark:disabled:text-primary-900': variant == 'primary-outline',
     'bg-transparent text-primary-700 hover:bg-primary-50 disabled:bg-transparent disabled:text-primary-200 disabled:border-primary-200 disabled:cursor-not-allowed dark:text-primary-200 dark:hover:bg-primary-900 dark:disabled:bg-transparent dark:disabled:text-primary-900': variant == 'primary-text',
 

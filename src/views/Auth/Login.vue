@@ -3,11 +3,12 @@ import Label from "@/components/Label.vue";
 import InputIconWrapper from "@/components/InputIconWrapper.vue";
 import InputError from "@/components/InputError.vue";
 import Input from "@/components/Input.vue";
-import CommunityIcon from '@/components/icons/AlertCircleIcon.vue'
 import AlertCircleIcon from "@/components/icons/AlertCircleIcon.vue";
-import ApplicationLogo from "@/components/ApplicationLogo.vue";
 import Caption from "@/components/Auth/Caption.vue";
 import AuthHeader from "@/components/Auth/AuthHeader.vue";
+import Button from "@/components/Button.vue";
+import BaseListbox from "@/components/BaseListbox.vue";
+
 </script>
 
 <template>
@@ -65,6 +66,21 @@ import AuthHeader from "@/components/Auth/AuthHeader.vue";
                                 </InputIconWrapper>
                                 <InputError message="" class="mt-2" />
                             </div>
+<!--                            <BaseListbox-->
+<!--                                id="rankID"-->
+<!--                                :options="countryLists"-->
+<!--                                v-model="selectCountry"-->
+<!--                                with-img-->
+<!--                                is-phone-code-->
+<!--                            />-->
+                        </div>
+                        <div>
+                            <Button
+                                type="button"
+                                class="block w-full flex justify-center"
+                            >
+                                Login
+                            </Button>
                         </div>
                     </form>
                 </div>

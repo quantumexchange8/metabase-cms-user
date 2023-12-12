@@ -70,7 +70,7 @@ const { type, variant, size, squared, pill, href, iconOnly, srText, external } =
 const { disabled } = toRefs(props)
 
 const baseClasses = [
-    'inline-flex items-center transition-colors font-medium select-none disabled:bg-gray-100 disabled:text-gray-300 dark:disabled:bg-gray-700 dark:disabled:text-gray-600 disabled:cursor-not-allowed focus:outline-none',
+    'inline-flex items-center text-sm transition-colors font-medium select-none disabled:bg-gray-100 disabled:text-gray-300 dark:disabled:bg-gray-700 dark:disabled:text-gray-600 disabled:cursor-not-allowed focus:outline-none',
 ]
 
 const variantClasses = (variant) => ({
@@ -106,9 +106,9 @@ const classes = computed(() => [
                 'p-3': size == 'lg',
             }
         : {
-                'px-2.5 py-1.5 text-sm': size == 'sm',
-                'px-4 py-2 text-base': size == 'base',
-                'px-5 py-2 text-xl': size == 'lg',
+                'px-4 py-2': size == 'sm',
+                'px-4 py-2.5': size == 'base',
+                'px-4 py-3': size == 'lg',
             },
     variantClasses(variant),
     {

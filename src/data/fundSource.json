@@ -1,0 +1,6 @@
+[
+  { "value": "Saving", "label": "Saving" },
+  { "value": "Investment", "label": "Investment" },
+  { "value": "Business", "label": "Business" },
+  { "value": "Retirement Fund", "label": "Retirement Fund" }
+]

@@ -7,7 +7,14 @@ import AlertCircleIcon from "@/components/icons/AlertCircleIcon.vue";
 import Caption from "@/components/Auth/Caption.vue";
 import AuthHeader from "@/components/Auth/AuthHeader.vue";
 import Button from "@/components/Button.vue";
-import BaseListbox from "@/components/BaseListbox.vue";
+import { useAuthStore } from "@/stores/auth";
+import {ref} from "vue";
+
+const authStore = useAuthStore();
+const form = ref({
+    email: '',
+    password: '',
+});
 
 </script>
 
@@ -21,16 +28,16 @@ import BaseListbox from "@/components/BaseListbox.vue";
                 </div>
 
                 <div class="w-full">
-                    <form action="" class="max-w-md p-5 mx-auto">
+                    <form action="" class="max-w-md p-5 mx-auto" @submit.prevent="authStore.handleLogin(form)">
                         <Caption
                             title="Log in"
                             caption="Welcome back! Please enter your details"
                         />
                         <div class="grid gap-6 my-8">
-                            <div class="space-y-2">
+                            <div class="space-y-1.5">
                                 <Label for="email" value="Email" />
                                 <InputIconWrapper
-                                    invalid=""
+                                    :invalid="authStore.errors.email"
                                 >
                                     <Input
                                         id="email"
@@ -39,18 +46,19 @@ import BaseListbox from "@/components/BaseListbox.vue";
                                         placeholder="Enter email"
                                         autofocus
                                         autocomplete="username"
-                                        invalid=""
+                                        :invalid="authStore.errors.email"
+                                        v-model="form.email"
                                     />
                                     <template #invalidIcon>
                                         <AlertCircleIcon aria-hidden="true" class="w-5 h-5 text-error-500 dark:text-error-400" />
                                     </template>
                                 </InputIconWrapper>
-                                <InputError message="" class="mt-2" />
+                                <InputError :message="authStore.errors.email" class="mt-2" />
                             </div>
-                            <div class="space-y-2">
+                            <div class="space-y-1.5">
                                 <Label for="password" value="Password" />
                                 <InputIconWrapper
-                                    invalid=""
+                                    :invalid="authStore.errors.password"
                                 >
                                     <Input
                                         id="password"
@@ -58,30 +66,29 @@ import BaseListbox from "@/components/BaseListbox.vue";
                                         class="block w-full"
                                         placeholder="Enter password"
                                         autocomplete="username"
-                                        invalid=""
+                                        :invalid="authStore.errors.password"
+                                        v-model="form.password"
                                     />
                                     <template #invalidIcon>
                                         <AlertCircleIcon aria-hidden="true" class="w-5 h-5 text-error-500 dark:text-error-400" />
                                     </template>
                                 </InputIconWrapper>
-                                <InputError message="" class="mt-2" />
+                                <InputError :message="authStore.errors.password" class="mt-2" />
                             </div>
-<!--                            <BaseListbox-->
-<!--                                id="rankID"-->
-<!--                                :options="countryLists"-->
-<!--                                v-model="selectCountry"-->
-<!--                                with-img-->
-<!--                                is-phone-code-->
-<!--                            />-->
                         </div>
-                        <div>
+                        <div class="flex flex-col gap-3">
                             <Button
-                                type="button"
-                                class="block w-full flex justify-center"
+                                class="w-full flex justify-center"
+                                size="lg"
                             >
-                                Login
+                                Log in
                             </Button>
+                            <p class="text-center text-base text-gray-light-500 dark:text-gray-dark-400">
+                                Don't have an account?
+                                <router-link to="/register"><span class="text-primary-600">Sign up</span></router-link>
+                            </p>
                         </div>
+
                     </form>
                 </div>
 

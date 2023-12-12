@@ -1,12 +1,13 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
-
+const colors = require("tailwindcss/colors");
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
     darkMode: 'class',
     content: [
         "./index.html",
-        "./src/**/*.{vue, js}"
+        "./src/**/*.{vue, js}",
+        "./node_modules/vue-tailwind-datepicker/**/*.js",
     ],
     theme: {
         extend: {
@@ -117,6 +118,8 @@ module.exports = {
                     DEFAULT: '#00C7BE',
                     dark: '#63E6E2'
                 },
+                "vtd-primary": colors.gray,
+                "vtd-secondary": colors.neutral,
                 // primary: 'rgb(var(--color-primary) / <alpha-value>)',
             },
         },
@@ -125,6 +128,10 @@ module.exports = {
         },
 
         fontSize: {
+            xs: ['12px', '16px'],
+            sm: ['14px', '20px'],
+            md: ['16px', '24px'],
+            lg: ['18px', '28px'],
             xl: ['20px', '30px'],
             '3xl': ['30px', '38px']
         },

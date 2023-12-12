@@ -19,6 +19,6 @@ const getFontSize = (size) => {
 </script>
 
 <template>
-    <h2 class="mb-2 font-semibold text-gray-light-900 dark:text-gray-dark-50 md:text-3xl">{{ title }}</h2>
-    <p class="text-base font-normal text-gray-light-500 dark:text-gray-dark-400">{{ caption }}</p>
+    <h2 class="font-semibold text-gray-light-900 dark:text-gray-dark-50 md:text-3xl">{{ title }}</h2>
+    <p class="text-md font-normal text-gray-light-500 dark:text-gray-dark-400">{{ caption }}</p>
 </template>

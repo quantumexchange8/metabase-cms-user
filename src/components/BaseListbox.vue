@@ -11,13 +11,20 @@ import {CheckIcon, ChevronDownIcon} from '@heroicons/vue/20/solid'
 
 const props = defineProps({
     options: Array,
-    modelValue: [String, Number, Array],
+    modelValue: [String, Number, Array, Object],
     placeholder: {
         type: String,
         default: 'Please Select'
     },
+    optionMessage: {
+        type: String,
+        default: 'Please Select'
+    },
     multiple: Boolean,
-    error: String,
+    error: {
+        type: Boolean,
+        default: false
+    },
     withImg: {
         type: Boolean,
         default: false,
@@ -62,13 +69,21 @@ const labelWithValue = computed(() => labelWithImg.value.map(item => item.value)
         :model-value="props.modelValue"
         @update:modelValue="value => emit('update:modelValue', value)"
     >
-        <div class="relative">
+        <div
+            class="relative rounded-lg border focus:ring-1 focus:outline-none"
+            :class="[
+                    {
+                          'border-error-300 focus-within:ring-error-300 hover:border-error-300 focus-within:border-error-300 focus-within:shadow-error-light dark:border-error-600 dark:focus-within:ring-error-600 dark:hover:border-error-600 dark:focus-within:border-error-600 dark:focus-within:shadow-error-dark': error,
+                          'border-gray-light-300 dark:border-gray-dark-600 focus:ring-primary-400 hover:border-primary-400 focus-within:border-primary-400 focus-within:shadow-primary-light dark:focus-within:ring-primary-500 dark:hover:border-primary-500 dark:focus-within:border-primary-500 dark:focus-within:shadow-primary-dark': !error,
+                    }
+                ]"
+        >
             <ListboxButton
                 class="relative w-full cursor-default rounded-lg border shadow-xs bg-white dark:bg-gray-dark-950 py-2.5 pl-4 pr-10 text-left focus:ring-1 focus:outline-none"
                 :class="[
                     {
-                        'border-error-300 focus:ring-error-300 hover:border-error-300 focus:border-error-300 focus:shadow-error-light dark:border-error-600 dark:focus:ring-error-600 dark:hover:border-error-600 dark:focus:border-error-600 dark:focus:shadow-error-dark': error,
-                        'border-gray-light-300 dark:border-gray-dark-600 focus:ring-primary-400 hover:border-primary-400 focus-within:border-primary-400 focus-within:shadow-primary-light dark:focus-within:ring-primary-500 dark:hover:border-primary-500 dark:focus-within:border-primary-500 dark:focus-within:shadow-primary-dark': !error
+                        'border-transparent focus-within:ring-error-300 focus:border-error-300 focus:shadow-error-light dark:border-transparent dark:focus:ring-error-600 dark:focus:border-error-600 dark:focus:shadow-error-dark': error,
+                        'border-transparent dark:border-transparent focus-within:ring-primary-400 focus-within:border-primary-400 focus-within:shadow-primary-light dark:focus-within:ring-primary-500 dark:focus-within:border-primary-500 dark:focus-within:shadow-primary-dark': !error
                     }
                 ]"
             >
@@ -85,7 +100,7 @@ const labelWithValue = computed(() => labelWithImg.value.map(item => item.value)
                         <span class="block truncate">{{ label }}</span>
                     </template>
                     <template v-else>
-                        <span class="text-gray-light-500 dark:text-gray-dark-400">{{ props.placeholder }}</span>
+                        <span class="block truncate text-gray-light-500 dark:text-gray-dark-400">{{ props.placeholder }}</span>
                     </template>
                 </div>
                 <span
@@ -103,7 +118,8 @@ const labelWithValue = computed(() => labelWithImg.value.map(item => item.value)
                 leave-to-class="opacity-0"
             >
                 <ListboxOptions
-                    class="z-10 absolute border border-gray-light-300 dark:border-gray-dark-600 mt-2 max-h-60 w-full overflow-auto rounded-lg bg-white dark:bg-gray-dark-950 py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
+                    class="z-10 absolute border border-gray-light-300 dark:border-gray-dark-600 mt-2 max-h-52 w-full overflow-auto rounded-lg bg-white dark:bg-gray-dark-950 py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
+                    :style="{ width: isPhoneCode ? '360px' : '' }"
                 >
                     <ListboxOption
                         v-slot="{ active, selected }"
@@ -116,7 +132,7 @@ const labelWithValue = computed(() => labelWithImg.value.map(item => item.value)
                             :class="[
                                 active ? 'bg-gray-light-100 dark:bg-gray-dark-800 text-gray-light-900 dark:text-gray-dark-50' : 'text-gray-light-900 dark:text-gray-dark-50',
                                 selected ? 'bg-gray-light-100 dark:bg-gray-dark-800' : '',
-                                'relative cursor-default select-none py-2 px-4',
+                                'relative cursor-default select-none py-2.5 px-4',
                             ]"
                         >
                             <template v-if="withImg">
@@ -143,9 +159,11 @@ const labelWithValue = computed(() => labelWithImg.value.map(item => item.value)
                             </span>
                         </li>
                     </ListboxOption>
+                    <li v-if="props.options.length === 0" class="text-gray-light-900 dark:text-gray-dark-50 py-2.5 px-4">
+                        {{ optionMessage }}
+                    </li>
                 </ListboxOptions>
             </transition>
-            <div class="text-sm text-error-500 mt-2" v-if="props.error">{{ props.error }}</div>
         </div>
     </Listbox>
 </template>

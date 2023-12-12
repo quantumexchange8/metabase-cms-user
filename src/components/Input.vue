@@ -7,7 +7,7 @@ defineProps({
         type: Boolean,
         default: false,
     },
-    invalid: String
+    invalid: [String, Array]
 })
 
 defineEmits(['update:modelValue'])

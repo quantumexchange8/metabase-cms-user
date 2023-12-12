@@ -12,7 +12,11 @@
         <div
             v-show="invalid"
             aria-hidden="true"
-            class="absolute inset-y-0 flex items-center right-4 pointer-events-none "
+            class="absolute inset-y-0 flex items-center pointer-events-none"
+            :class="{
+                'right-10': isPassword,
+                'right-4': !isPassword,
+            }"
         >
             <slot name="invalidIcon" />
         </div>
@@ -23,7 +27,11 @@
 
 <script setup>
 defineProps({
-    invalid: String
+    invalid: [String, Array],
+    isPassword: {
+        type: Boolean,
+        default: false
+    }
 })
 
 </script>

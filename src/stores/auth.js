@@ -52,11 +52,20 @@ export const useAuthStore = defineStore("auth", {
                     trade_experience: data.trade_experience,
                     source_of_fund: data.source_of_fund,
                     gender: data.gender,
+                    dob: data.dob,
+                    nationality: data.nationality,
+                    us_citizen: data.us_citizen,
+                    identification_type: data.identification_type,
                     identification_number: data.identification_number,
                     identity_proof: data.identity_proof,
                     address_proof: data.address_proof,
                     password: data.password,
                     password_confirmation: data.password_confirmation,
+                    referral_code: data.referral_code,
+                }, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    }
                 });
             } catch (error) {
                 if (error.response.status === 422) {

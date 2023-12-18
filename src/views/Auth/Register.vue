@@ -196,6 +196,10 @@ const removeAddressProof = () => {
     selectedAddressProofFile.value = null;
 };
 
+const submitRegister = (form) => {
+    authStore.handleRegister(form)
+};
+
 const submitRegisterValidation = (form) => {
     authStore.handleRegisterValidation(form).then(() => {
         if (authStore.errors.length <= 0) {
@@ -752,6 +756,7 @@ const passwordValidation = () => {
                         </Button>
                         <Button
                             v-if="formStep === 4"
+                            @click.prevent="submitRegister(form)"
                         >
                             <span>Sign Up</span>
                         </Button>

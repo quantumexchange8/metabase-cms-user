@@ -3,7 +3,7 @@ import HomeView from '../views/HomeView.vue'
 
 const routes = [
     {
-        path: '/',
+        path: '/auth',
         name: 'Auth',
         component: () => import('@/layouts/AuthLayout.vue'),
         children: [
@@ -50,13 +50,38 @@ const routes = [
             // },
         ],
     },
+    // {
+    //     path: '/sidebar',
+    //     name: 'Auth',
+    //     component: () => import('@/layouts/AppLayout.vue'),
+    //     meta: {
+    //         title: 'Sidebar'
+    //     },
+    //     children: [
+    //         // {
+    //         //     path: '/login',
+    //         //     name: 'Login',
+    //         //     component: () => import('@/views/Auth/Login.vue'),
+    //         //     meta: {
+    //         //         title: 'Login'
+    //         //     }
+    //         // }
+    //     ]
+    // },
     {
-        path: '/dashboard',
-        name: 'home',
-        component: HomeView,
-        meta: {
-            title: 'Dashboard'
-        }
+        path: '/',
+        name: 'Index',
+        component: () => import('@/layouts/AppLayout.vue'),
+        children: [
+            {
+                path: '/dashboard',
+                name: 'Dashboard',
+                component: () => import('@/views/Dashboard/Dashboard.vue'),
+                meta: {
+                    title: 'Login'
+                }
+            }
+        ]
     },
 ]
 

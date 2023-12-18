@@ -72,6 +72,49 @@ export const useAuthStore = defineStore("auth", {
                     this.authErrors = error.response.data.errors;
                 }
             }
+        },
+        async handleRegister (data) {
+            this.authErrors = [];
+            await this.getToken();
+
+            try {
+                await axios.post('/register', {
+                    title: data.title,
+                    name: data.name,
+                    email: data.email,
+                    phone: data.phone,
+                    country: data.country,
+                    state: data.state,
+                    city: data.city,
+                    trade_experience: data.trade_experience,
+                    source_of_fund: data.source_of_fund,
+                    gender: data.gender,
+                    dob: data.dob,
+                    nationality: data.nationality,
+                    us_citizen: data.us_citizen,
+                    identification_type: data.identification_type,
+                    identification_number: data.identification_number,
+                    identity_proof: data.identity_proof,
+                    address_proof: data.address_proof,
+                    password: data.password,
+                    password_confirmation: data.password_confirmation,
+                    referral_code: data.referral_code,
+                }, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    }
+                });
+                await this.router.push('/login')
+            } catch (error) {
+                if (error.response.status === 422) {
+                    this.authErrors = error.response.data.errors;
+                }
+            }
+        },
+        async handleLogOut () {
+            await axios.post("/logout");
+            this.authUser = null;
+            await this.router.push('/login')
         }
     }
 })

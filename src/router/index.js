@@ -28,6 +28,16 @@ const routes = [
                     title: 'Register'
                 }
             },
+            {
+                path: '/badges',
+                name: 'Badges',
+                component: () => import('@/views/Badges.vue'),
+            },
+            {
+                path: '/toasts',
+                name: 'Toasts',
+                component: () => import('@/views/Toasts.vue'),
+            },
             // {
             //     path: '/auth/forgot-password',
             //     name: 'ForgotPassword',

@@ -88,7 +88,7 @@ const routes = [
                 name: 'Dashboard',
                 component: () => import('@/views/Dashboard/Dashboard.vue'),
                 meta: {
-                    title: 'Login'
+                    title: 'Dashboard'
                 }
             }
         ]

@@ -38,6 +38,7 @@ const routes = [
                 name: 'Toasts',
                 component: () => import('@/views/Toasts.vue'),
             },
+            
             // {
             //     path: '/auth/forgot-password',
             //     name: 'ForgotPassword',
@@ -90,7 +91,12 @@ const routes = [
                 meta: {
                     title: 'Dashboard'
                 }
-            }
+            },
+            {
+                path: '/alerts',
+                name: 'Alert',
+                component: () => import('@/views/Alerts.vue'),
+            },
         ]
     },
 ]

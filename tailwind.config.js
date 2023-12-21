@@ -143,6 +143,8 @@ module.exports = {
             'primary-dark': 'var(--box-shadow-primary-dark)',
             'error-light': "0px 0px 0px 4px rgba(254, 228, 226, 1)",
             'error-dark': "0px 0px 0px 4px rgba(85, 22, 12, 1)",
+
+            xl: '0px 20px 24px -4px rgba(16, 24, 40, 0.11)'
         },
 
         content: {

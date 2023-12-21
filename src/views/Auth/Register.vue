@@ -418,13 +418,13 @@ const passwordValidation = () => {
                             <Label class="dark:text-white" for="gender" value="Gender" />
                             <div class="flex gap-x-12">
                                 <div class="flex">
-                                    <input type="radio" name="gender" v-model="form.gender" class="shrink-0 mt-0.5 border-gray-light-300 rounded-full hover:border-primary-600 dark:hover:border-primary-600 focus:ring-primary-600 dark:bg-transparent dark:border-gray-dark-600 dark:checked:bg-primary-600 dark:checked:border-primary-600 dark:focus:ring-offset-gray-dark-800" id="hs-radio-group-1" value="male">
-                                    <label for="hs-radio-group-1" class="text-sm text-gray-600 ml-2 dark:text-white">Male</label>
+                                    <input type="radio" name="gender" v-model="form.gender" class="shrink-0 mt-0.5 border-gray-light-300 rounded-full hover:border-primary-600 dark:hover:border-primary-600 focus:ring-primary-600 dark:bg-transparent dark:border-gray-dark-600 dark:checked:bg-primary-600 dark:checked:border-primary-600 dark:focus:ring-offset-gray-dark-800" id="male" value="male">
+                                    <label for="male" class="text-sm text-gray-600 ml-2 dark:text-white">Male</label>
                                 </div>
 
                                 <div class="flex">
-                                    <input type="radio" name="gender" v-model="form.gender" class="shrink-0 mt-0.5 border-gray-light-300 rounded-full hover:border-primary-600 dark:hover:border-primary-600 focus:ring-primary-600 dark:bg-transparent dark:border-gray-dark-600 dark:checked:bg-primary-600 dark:checked:border-primary-600 dark:focus:ring-offset-gray-dark-800" id="hs-radio-group-2" value="female">
-                                    <label for="hs-radio-group-2" class="text-sm text-gray-600 ml-2 dark:text-white">Female</label>
+                                    <input type="radio" name="gender" v-model="form.gender" class="shrink-0 mt-0.5 border-gray-light-300 rounded-full hover:border-primary-600 dark:hover:border-primary-600 focus:ring-primary-600 dark:bg-transparent dark:border-gray-dark-600 dark:checked:bg-primary-600 dark:checked:border-primary-600 dark:focus:ring-offset-gray-dark-800" id="female" value="female">
+                                    <label for="female" class="text-sm text-gray-600 ml-2 dark:text-white">Female</label>
                                 </div>
                             </div>
                             <InputError :message="authStore.errors.gender" class="mt-2" />
@@ -455,13 +455,13 @@ const passwordValidation = () => {
                             <Label class="dark:text-white" for="us_citizen" value="Are you US citizen?" />
                             <div class="flex gap-x-12">
                                 <div class="flex">
-                                    <input type="radio" name="us_citizen" v-model="form.us_citizen" class="shrink-0 mt-0.5 border-gray-light-300 rounded-full hover:border-primary-600 dark:hover:border-primary-600 focus:ring-primary-600 dark:bg-transparent dark:border-gray-dark-600 dark:checked:bg-primary-600 dark:checked:border-primary-600 dark:focus:ring-offset-gray-dark-800" id="hs-radio-group-1" :value=true>
-                                    <label for="hs-radio-group-1" class="text-sm text-gray-600 ml-2 dark:text-white">Yes</label>
+                                    <input type="radio" name="us_citizen" v-model="form.us_citizen" class="shrink-0 mt-0.5 border-gray-light-300 rounded-full hover:border-primary-600 dark:hover:border-primary-600 focus:ring-primary-600 dark:bg-transparent dark:border-gray-dark-600 dark:checked:bg-primary-600 dark:checked:border-primary-600 dark:focus:ring-offset-gray-dark-800" id="us_true" :value=true>
+                                    <label for="us_true" class="text-sm text-gray-600 ml-2 dark:text-white">Yes</label>
                                 </div>
 
                                 <div class="flex">
-                                    <input type="radio" name="us_citizen" v-model="form.us_citizen" class="shrink-0 mt-0.5 border-gray-light-300 rounded-full hover:border-primary-600 dark:hover:border-primary-600 focus:ring-primary-600 dark:bg-transparent dark:border-gray-dark-600 dark:checked:bg-primary-600 dark:checked:border-primary-600 dark:focus:ring-offset-gray-dark-800" id="hs-radio-group-2" :value="false">
-                                    <label for="hs-radio-group-2" class="text-sm text-gray-600 ml-2 dark:text-white">No</label>
+                                    <input type="radio" name="us_citizen" v-model="form.us_citizen" class="shrink-0 mt-0.5 border-gray-light-300 rounded-full hover:border-primary-600 dark:hover:border-primary-600 focus:ring-primary-600 dark:bg-transparent dark:border-gray-dark-600 dark:checked:bg-primary-600 dark:checked:border-primary-600 dark:focus:ring-offset-gray-dark-800" id="us_false" :value="false">
+                                    <label for="us_false" class="text-sm text-gray-600 ml-2 dark:text-white">No</label>
                                 </div>
                             </div>
                             <InputError :message="authStore.errors.us_citizen" class="mt-2" />
@@ -470,13 +470,13 @@ const passwordValidation = () => {
                             <Label class="dark:text-white" for="identification_type" value="Identification type" />
                             <div class="flex gap-x-12">
                                 <div class="flex">
-                                    <input type="radio" name="identification_type" v-model="form.identification_type" class="shrink-0 mt-0.5 border-gray-light-300 rounded-full hover:border-primary-600 dark:hover:border-primary-600 focus:ring-primary-600 dark:bg-transparent dark:border-gray-dark-600 dark:checked:bg-primary-600 dark:checked:border-primary-600 dark:focus:ring-offset-gray-dark-800" id="hs-radio-group-1" value="nric">
-                                    <label for="hs-radio-group-1" class="text-sm text-gray-600 ml-2 dark:text-white">NRIC</label>
+                                    <input type="radio" name="identification_type" v-model="form.identification_type" class="shrink-0 mt-0.5 border-gray-light-300 rounded-full hover:border-primary-600 dark:hover:border-primary-600 focus:ring-primary-600 dark:bg-transparent dark:border-gray-dark-600 dark:checked:bg-primary-600 dark:checked:border-primary-600 dark:focus:ring-offset-gray-dark-800" id="nric" value="nric">
+                                    <label for="nric" class="text-sm text-gray-600 ml-2 dark:text-white">NRIC</label>
                                 </div>
 
                                 <div class="flex">
-                                    <input type="radio" name="identification_type" v-model="form.identification_type" class="shrink-0 mt-0.5 border-gray-light-300 rounded-full hover:border-primary-600 dark:hover:border-primary-600 focus:ring-primary-600 dark:bg-transparent dark:border-gray-dark-600 dark:checked:bg-primary-600 dark:checked:border-primary-600 dark:focus:ring-offset-gray-dark-800" id="hs-radio-group-2" value="passport">
-                                    <label for="hs-radio-group-2" class="text-sm text-gray-600 ml-2 dark:text-white">Passport</label>
+                                    <input type="radio" name="identification_type" v-model="form.identification_type" class="shrink-0 mt-0.5 border-gray-light-300 rounded-full hover:border-primary-600 dark:hover:border-primary-600 focus:ring-primary-600 dark:bg-transparent dark:border-gray-dark-600 dark:checked:bg-primary-600 dark:checked:border-primary-600 dark:focus:ring-offset-gray-dark-800" id="passport" value="passport">
+                                    <label for="passport" class="text-sm text-gray-600 ml-2 dark:text-white">Passport</label>
                                 </div>
                             </div>
                             <InputError :message="authStore.errors.identification_type" class="mt-2" />

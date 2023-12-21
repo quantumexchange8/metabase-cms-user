@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import axios from 'axios';
+import {useAlertStore} from "@/stores/alert";
 
 export const useAuthStore = defineStore("auth", {
     state: () => ({
@@ -74,11 +75,12 @@ export const useAuthStore = defineStore("auth", {
             }
         },
         async handleRegister (data) {
+            const alertStore = useAlertStore()
             this.authErrors = [];
             await this.getToken();
 
             try {
-                await axios.post('/register', {
+                const response = await axios.post('/register', {
                     title: data.title,
                     name: data.name,
                     email: data.email,
@@ -104,6 +106,13 @@ export const useAuthStore = defineStore("auth", {
                         'Content-Type': 'multipart/form-data',
                     }
                 });
+
+                alertStore.show({
+                    intent: response.data.status,
+                    title: response.data.title,
+                    message: response.data.message,
+                });
+
                 await this.router.push('/login')
             } catch (error) {
                 if (error.response.status === 422) {

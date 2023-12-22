@@ -122,6 +122,13 @@ module.exports = {
                 "vtd-secondary": colors.neutral,
                 // primary: 'rgb(var(--color-primary) / <alpha-value>)',
             },
+
+            maxHeight: {
+                '48': '48%',
+                '72': '72%',
+                '84': '84%',
+                '96': '96%',
+            }
         },
         fontFamily: {
             sans: ['Inter', ...defaultTheme.fontFamily.sans],

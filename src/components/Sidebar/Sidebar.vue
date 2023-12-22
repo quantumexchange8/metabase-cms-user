@@ -9,13 +9,22 @@ import {
     LogOut01,
 } from "@/components/icons/outline";
 import Button from "@/components/Button.vue";
-import {onMounted} from "vue";
+import {onMounted, ref} from "vue";
 import { useAuthStore } from "@/stores/auth";
 import {useDark, useToggle} from "@vueuse/core";
+import Modal from "@/components/Modal.vue";
 
 const authStore = useAuthStore();
 const isDark = useDark();
 const toggleDarkMode = useToggle(isDark);
+const depositModal = ref(false);
+
+const openDepositModal = () => {
+    depositModal.value = true;
+}
+const closeModal = () => {
+    depositModal.value = false
+}
 
 onMounted(async () => {
     await authStore.getUser()
@@ -69,6 +78,7 @@ const sidebarItems = [
                 type="button"
                 variant="primary-filled"
                 class="flex justify-center font-semibold"
+                @click="openDepositModal"
             >
                 Deposit
             </Button>
@@ -104,4 +114,8 @@ const sidebarItems = [
             </Button>
         </nav>
     </div>
+
+    <Modal :show="depositModal" title="Deposit" @close="closeModal">
+        OK
+    </Modal>
 </template>
